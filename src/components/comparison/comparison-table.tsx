@@ -37,31 +37,29 @@ export function ComparisonTable({
             {selectedIncoterms.map((incoterm) => (
               <th
                 key={incoterm.code}
-                className="min-w-[180px] border-b border-border bg-muted/50 p-4"
+                className="relative min-w-[180px] border-b border-border bg-muted/50 p-4 text-center"
               >
-                <div className="flex items-start justify-between">
-                  <div>
-                    <Link
-                      href={`/learn/${incoterm.code.toLowerCase()}`}
-                      className="text-2xl font-bold text-primary hover:underline"
-                    >
-                      {incoterm.code}
-                    </Link>
-                    <p className="text-sm font-normal text-muted-foreground">
-                      {incoterm.fullName}
-                    </p>
-                  </div>
-                  {selectedIncoterms.length > 2 && (
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6"
-                      onClick={() => onRemove(incoterm.code)}
-                    >
-                      <X className="h-4 w-4" />
-                    </Button>
-                  )}
+                <div>
+                  <Link
+                    href={`/learn/${incoterm.code.toLowerCase()}`}
+                    className="text-2xl font-bold text-primary hover:underline"
+                  >
+                    {incoterm.code}
+                  </Link>
+                  <p className="text-sm font-normal text-muted-foreground">
+                    {incoterm.fullName}
+                  </p>
                 </div>
+                {selectedIncoterms.length > 2 && (
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="absolute right-1 top-1 h-6 w-6"
+                    onClick={() => onRemove(incoterm.code)}
+                  >
+                    <X className="h-4 w-4" />
+                  </Button>
+                )}
                 <Badge
                   variant={
                     incoterm.transportMode === "sea" ? "default" : "secondary"
