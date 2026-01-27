@@ -12,8 +12,8 @@ export function ResponsibilityDiagram({ incoterm }: ResponsibilityDiagramProps) 
     { label: "Loading", position: 15 },
     { label: "Export", position: 25 },
     { label: "Carriage", position: 50 },
-    { label: "Import", position: 75 },
-    { label: "Delivery", position: 90 },
+    { label: "Import", position: 65 },
+    { label: "Delivery", position: 85 },
     { label: "Unloading", position: 100 },
   ];
 
@@ -24,7 +24,8 @@ export function ResponsibilityDiagram({ incoterm }: ResponsibilityDiagramProps) 
       </h3>
 
       {/* Diagram */}
-      <div className="relative mb-8">
+      {/* Diagram */}
+      <div className="relative mb-8 mx-4">
         {/* Background bar */}
         <div className="h-12 rounded-full bg-muted" />
 
@@ -57,40 +58,85 @@ export function ResponsibilityDiagram({ incoterm }: ResponsibilityDiagramProps) 
         </div>
 
         {/* Stage markers */}
-        <div className="absolute -bottom-8 left-0 right-0 flex justify-between text-xs text-muted-foreground">
+        <div className="absolute -bottom-8 left-0 right-0 h-6 text-xs text-muted-foreground font-medium select-none">
           {stages.map((stage) => (
-            <span
+            <div
               key={stage.label}
-              className="w-12 text-center"
+              className="absolute flex flex-col items-center"
               style={{
-                position: "absolute",
                 left: `${stage.position}%`,
-                transform: "translateX(-50%)",
+                transform:
+                  stage.position === 0
+                    ? "translateX(0%)" /* Start: Align Left */
+                    : stage.position === 100
+                      ? "translateX(-100%)" /* End: Align Right */
+                      : "translateX(-50%)", /* Middle: Center */
+                alignItems:
+                  stage.position === 0
+                    ? "flex-start"
+                    : stage.position === 100
+                      ? "flex-end"
+                      : "center"
               }}
             >
-              {stage.label}
-            </span>
+              {/* Tick Mark */}
+              <div className="h-1.5 w-px bg-border mb-1" />
+
+              {/* Label */}
+              <span className="whitespace-nowrap leading-none">
+                {stage.label}
+              </span>
+            </div>
           ))}
         </div>
       </div>
 
       {/* Legend */}
-      <div className="mt-12 flex flex-wrap gap-6">
-        <div className="flex items-center gap-2">
-          <div className="h-4 w-4 rounded bg-blue-500" />
-          <span className="text-sm">Seller Responsibility</span>
+      {/* Legend & Definitions */}
+      <div className="mt-12 grid gap-8 md:grid-cols-2">
+        {/* Category 1: Responsibilities */}
+        <div className="space-y-4">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Operational Responsibility
+          </h4>
+          <div className="flex flex-col gap-3">
+            <div className="flex items-center gap-3">
+              <div className="h-5 w-5 rounded bg-blue-500 shadow-sm ring-1 ring-white/20" />
+              <span className="text-sm font-medium">Seller Responsibility</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <div className="h-5 w-5 rounded bg-orange-500 shadow-sm ring-1 ring-white/20" />
+              <span className="text-sm font-medium">Buyer Responsibility</span>
+            </div>
+          </div>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="h-4 w-4 rounded bg-orange-500" />
-          <span className="text-sm">Buyer Responsibility</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-4 w-1 bg-destructive" />
-          <span className="text-sm">Risk Transfer Point</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="h-4 w-1 bg-foreground" />
-          <span className="text-sm">Cost Transfer Point</span>
+
+        {/* Category 2: Transfer Points */}
+        <div className="space-y-4">
+          <h4 className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+            Critical Transfer Points
+          </h4>
+          <div className="space-y-4">
+            <div className="group">
+              <div className="flex items-center gap-3 mb-1">
+                <div className="h-5 w-1.5 bg-destructive rounded-full" />
+                <span className="text-sm font-medium">Risk Transfer Point</span>
+              </div>
+              <p className="pl-4.5 text-xs text-muted-foreground border-l border-border ml-0.5">
+                Who bears the loss/damage if something happens
+              </p>
+            </div>
+
+            <div className="group">
+              <div className="flex items-center gap-3 mb-1">
+                <div className="h-5 w-1.5 bg-foreground rounded-full" />
+                <span className="text-sm font-medium">Cost Transfer Point</span>
+              </div>
+              <p className="pl-4.5 text-xs text-muted-foreground border-l border-border ml-0.5">
+                Who pays for the logistics activities
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
