@@ -8,6 +8,17 @@ export function Footer() {
             Educational purposes only - not legal advice. This content is for
             learning. Consult trade professionals for actual transactions.
           </p>
+          <p className="mt-2 text-xs opacity-80">
+            Developed by{" "}
+            <a
+              href="https://karl-nguyen.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium hover:text-primary transition-colors hover:underline"
+            >
+              Karl
+            </a>
+          </p>
         </div>
       </div>
     </footer>
