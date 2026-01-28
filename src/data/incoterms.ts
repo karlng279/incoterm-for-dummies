@@ -93,7 +93,7 @@ export const incoterms: Incoterm[] = [
       "Assuming seller bears risk until destination",
     ],
     riskTransferPoint: 20,
-    costTransferPoint: 75,
+    costTransferPoint: 65,
     sellerResponsibilities: [
       { id: "cpt-s1", label: "Packaging", description: "Package goods for transport" },
       { id: "cpt-s2", label: "Export Clearance", description: "Clear goods for export" },
@@ -128,7 +128,7 @@ export const incoterms: Incoterm[] = [
       "Forgetting insurance is minimum only - buyer may need more",
     ],
     riskTransferPoint: 20,
-    costTransferPoint: 80,
+    costTransferPoint: 65,
     sellerResponsibilities: [
       { id: "cip-s1", label: "Packaging", description: "Package goods for transport" },
       { id: "cip-s2", label: "Export Clearance", description: "Clear goods for export" },
@@ -162,7 +162,7 @@ export const incoterms: Incoterm[] = [
       "Confusion about who unloads the goods",
       "Not considering import clearance delays affecting delivery",
     ],
-    riskTransferPoint: 90,
+    riskTransferPoint: 85,
     costTransferPoint: 85,
     sellerResponsibilities: [
       { id: "dap-s1", label: "Packaging", description: "Package goods for transport" },
@@ -196,8 +196,8 @@ export const incoterms: Incoterm[] = [
       "Not specifying exact unloading point",
       "Using when buyer has better unloading facilities",
     ],
-    riskTransferPoint: 92,
-    costTransferPoint: 88,
+    riskTransferPoint: 100,
+    costTransferPoint: 100,
     sellerResponsibilities: [
       { id: "dpu-s1", label: "Packaging", description: "Package goods for transport" },
       { id: "dpu-s2", label: "Export Clearance", description: "Clear goods for export" },
@@ -231,8 +231,8 @@ export const incoterms: Incoterm[] = [
       "Not understanding VAT/GST recovery implications",
       "Using when buyer could recover import VAT but seller cannot",
     ],
-    riskTransferPoint: 95,
-    costTransferPoint: 95,
+    riskTransferPoint: 85,
+    costTransferPoint: 85,
     sellerResponsibilities: [
       { id: "ddp-s1", label: "Packaging", description: "Package goods for transport" },
       { id: "ddp-s2", label: "Export Clearance", description: "Clear goods for export" },
@@ -340,7 +340,7 @@ export const incoterms: Incoterm[] = [
       "Not understanding the split between cost and risk points",
     ],
     riskTransferPoint: 30,
-    costTransferPoint: 75,
+    costTransferPoint: 65,
     sellerResponsibilities: [
       { id: "cfr-s1", label: "Packaging", description: "Package goods for sea transport" },
       { id: "cfr-s2", label: "Export Clearance", description: "Clear goods for export" },
@@ -376,7 +376,7 @@ export const incoterms: Incoterm[] = [
       "Using for containerized cargo (use CIP instead)",
     ],
     riskTransferPoint: 30,
-    costTransferPoint: 80,
+    costTransferPoint: 65,
     sellerResponsibilities: [
       { id: "cif-s1", label: "Packaging", description: "Package goods for sea transport" },
       { id: "cif-s2", label: "Export Clearance", description: "Clear goods for export" },
